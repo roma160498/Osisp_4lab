@@ -1,0 +1,212 @@
+21:41:44 Message: INITIALIZE: Created 3 threads. The max threads: 5
+21:41:44 Message: Create a new task. Thread id: 212
+21:41:44 Message: Create a new task. Thread id: 216
+21:41:44 Message: Create a new task. Thread id: 220
+21:41:44 Warning! No available threads in the pool.
+21:41:44 Message: The thread pool has completed work
+|*******************************************|
+
+21:44:39 Message: INITIALIZE: Created 3 threads. The max threads: 5
+21:44:39 Message: Create a new task. Thread id: 208
+21:44:39 Message: Create a new task. Thread id: 216
+21:44:39 Message: Create a new task. Thread id: 220
+21:44:39 Warning! No available threads in the pool.
+21:44:39 Message: The thread pool has completed work
+|*******************************************|
+
+21:46:03 Message: INITIALIZE: Created 4 threads. The max threads: 5
+21:46:03 Message: Create a new task. Thread id: 212
+21:46:03 Message: Create a new task. Thread id: 216
+21:46:03 Message: Create a new task. Thread id: 220
+21:46:03 Message: Create a new task. Thread id: 224
+21:46:03 Message: The thread pool has completed work
+|*******************************************|
+
+21:46:18 Message: INITIALIZE: Created 2 threads. The max threads: 5
+21:46:18 Message: Create a new task. Thread id: 200
+21:46:18 Message: Create a new task. Thread id: 208
+21:46:18 Warning! No available threads in the pool.
+21:46:18 Warning! No available threads in the pool.
+21:46:18 Message: The thread pool has completed work
+|*******************************************|
+
+22:23:41 Message: INITIALIZE: Created 1 threads. The max threads: 1
+22:23:41 Message: Create a new task. Thread id: 136
+22:23:41 Warning! No available threads in the pool.
+22:23:41 Warning! No available threads in the pool.
+22:23:41 Warning! No available threads in the pool.
+22:23:41 Message: The thread pool has completed work
+|*******************************************|
+
+22:29:16 Message: INITIALIZE: Created 1 threads. The max threads: 1
+22:29:16 Message: Create a new task. Thread id: 196
+22:29:16 Warning! No available threads in the pool.
+22:29:16 Warning! No available threads in the pool.
+22:29:16 Warning! No available threads in the pool.
+22:29:16 Message: The thread pool has completed work
+|*******************************************|
+
+22:29:43 Message: INITIALIZE: Created 1 threads. The max threads: 5
+22:29:43 Message: Create a new task. Thread id: 196
+22:29:43 Warning! No available threads in the pool.
+22:29:43 Warning! No available threads in the pool.
+22:29:43 Warning! No available threads in the pool.
+22:29:43 Message: The thread pool has completed work
+|*******************************************|
+
+22:30:02 Message: INITIALIZE: Created 3 threads. The max threads: 3
+22:30:02 Message: Create a new task. Thread id: 216
+22:30:02 Message: Create a new task. Thread id: 220
+22:30:02 Message: Create a new task. Thread id: 224
+22:30:02 Warning! No available threads in the pool.
+22:30:02 Message: The thread pool has completed work
+|*******************************************|
+
+21:03:48 Message: INITIALIZE: Created 3 threads. The max threads: 3
+21:03:48 Message: Create a new task. Thread id: 212
+21:03:48 Message: Create a new task. Thread id: 200
+21:03:48 Message: Create a new task. Thread id: 208
+21:03:48 Message: Create a new task. Thread id: 216
+21:03:48 Message: The thread pool has completed work
+|*******************************************|
+
+21:04:07 Message: INITIALIZE: Created 3 threads. The max threads: 3
+21:04:07 Message: Create a new task. Thread id: 212
+21:04:07 Message: Create a new task. Thread id: 216
+21:04:07 Message: Create a new task. Thread id: 220
+21:04:07 Message: Create a new task. Thread id: 224
+21:04:07 Message: Create a new task. Thread id: 200
+21:04:07 Message: Create a new task. Thread id: 228
+21:04:07 Message: The thread pool has completed work
+|*******************************************|
+
+21:04:21 Message: INITIALIZE: Created 3 threads. The max threads: 3
+21:04:21 Message: Create a new task. Thread id: 76
+21:04:21 Message: Create a new task. Thread id: 212
+21:04:21 Message: Create a new task. Thread id: 208
+21:04:21 Message: Create a new task. Thread id: 216
+21:04:21 Message: Create a new task. Thread id: 220
+21:04:21 Message: Create a new task. Thread id: 224
+21:04:21 Message: Create a new task. Thread id: 228
+21:04:21 Message: The thread pool has completed work
+|*******************************************|
+
+22:28:01 Message: INITIALIZE: Created 3 threads. The max threads: 3
+22:28:01 Message: Create a new task. Thread id: 200
+22:28:01 Message: Create a new task. Thread id: 204
+22:28:01 Message: Create a new task. Thread id: 212
+22:28:01 Message: Create a new task. Thread id: 216
+22:28:01 Message: Create a new task. Thread id: 220
+22:28:01 Message: Create a new task. Thread id: 224
+22:28:01 Message: Create a new task. Thread id: 228
+22:28:01 Message: The thread pool has completed work
+|*******************************************|
+
+00:17:36 Message: The thread pool has completed work
+|*******************************************|
+
+00:36:23 Message: The thread pool has completed work
+|*******************************************|
+
+00:37:16 Message: The thread pool has completed work
+|*******************************************|
+
+00:44:41 Message: The thread pool has completed work
+|*******************************************|
+
+00:46:07 Message: The thread pool has completed work
+|*******************************************|
+
+00:54:45 Message: The thread pool has completed work
+|*******************************************|
+
+01:15:54 Message: The thread pool has completed work
+|*******************************************|
+
+01:16:48 Message: The thread pool has completed work
+|*******************************************|
+
+01:17:25 Message: The thread pool has completed work
+|*******************************************|
+
+01:21:53 Message: The thread pool has completed work
+|*******************************************|
+
+01:23:30 Message: The thread pool has completed work
+|*******************************************|
+
+01:27:27 Message: The thread pool has completed work
+|*******************************************|
+
+01:29:39 Message: The thread pool has completed work
+|*******************************************|
+
+01:30:08 Message: The thread pool has completed work
+|*******************************************|
+
+01:30:50 Message: The thread pool has completed work
+|*******************************************|
+
+01:32:53 Message: The thread pool has completed work
+|*******************************************|
+
+01:33:49 Message: The thread pool has completed work
+|*******************************************|
+
+01:40:21 Message: The thread pool has completed work
+|*******************************************|
+
+01:43:33 Message: The thread pool has completed work
+|*******************************************|
+
+01:45:54 Message: The thread pool has completed work
+|*******************************************|
+
+01:46:24 Message: The thread pool has completed work
+|*******************************************|
+
+01:47:53 Message: The thread pool has completed work
+|*******************************************|
+
+01:58:13 Message: The thread pool has completed work
+|*******************************************|
+
+01:58:31 Message: The thread pool has completed work
+|*******************************************|
+
+02:04:25 Message: The thread pool has completed work
+|*******************************************|
+
+02:04:58 Message: The thread pool has completed work
+|*******************************************|
+
+02:05:36 Message: The thread pool has completed work
+|*******************************************|
+
+02:06:05 Message: The thread pool has completed work
+|*******************************************|
+
+02:11:18 Message: The thread pool has completed work
+|*******************************************|
+
+02:12:10 Message: The thread pool has completed work
+|*******************************************|
+
+02:13:14 Message: The thread pool has completed work
+|*******************************************|
+
+02:13:54 Message: The thread pool has completed work
+|*******************************************|
+
+02:14:51 Message: The thread pool has completed work
+|*******************************************|
+
+02:16:45 Message: The thread pool has completed work
+|*******************************************|
+
+02:17:33 Message: The thread pool has completed work
+|*******************************************|
+
+02:17:59 Message: The thread pool has completed work
+|*******************************************|
+
