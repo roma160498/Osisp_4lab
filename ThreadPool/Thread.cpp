@@ -19,5 +19,5 @@ void Thread::createNewThread(LPTHREAD_START_ROUTINE lpStartAddress, vector<strin
 
 Thread::~Thread()
 {
-	delete _hThread;
+	CloseHandle(_hThread);
 }

@@ -2,21 +2,30 @@
 #include "ThreadPool.h"
 #include "TaskQueue.h"
 #include <conio.h> 
-#include <string> // подключаем строки
-#include <fstream> // подключаем файлы
-#include <vector>
+#include <fstream> 
 #include <algorithm>
+#include <iostream>
+#include <vector>
+#include <map>
 
-void testMethod2()
-{
-	Sleep(3000);
-	printf("Method 2 done\n");
-}
+using namespace std;
 
-void testMethod()
+int lineCount = 0, amountOfParts = 0;
+
+int countLines(string fileName)
 {
-	Sleep(4000);
-	printf("Method done\n");
+	string line;
+	ifstream file(fileName);
+	int tempCounter = 0;
+	if (!file) {
+		cout << "Error with opening file";
+		return -1;
+	}
+	while (getline(file, line)) {
+		tempCounter++;
+	}
+	file.close();
+	return tempCounter;
 }
 
 void sortFilePart(vector<string> * lines)
@@ -24,82 +33,127 @@ void sortFilePart(vector<string> * lines)
 	sort((*lines).begin(), (*lines).end());
 }
 
+void resultSort(int l, int r, vector<string> * linesmap,int size) {
+	if (r == l)
+		return;
+	if (r - l == 1) {
+		if ((*linesmap)[r] < (*linesmap)[l])
+			swap((*linesmap)[r], (*linesmap)[l]);
+		return;
+	}
+	int m = (r + l) / 2;
+	resultSort(l, m, linesmap, size);
+	resultSort(m + 1, r,linesmap, size);
+	vector<string> buf(size);
+	int xl = l;
+	int xr = m + 1;
+	int cur = 0;
+	while (r - l + 1 != cur) {
+		if (xl > m)
+			buf[cur++] = (*linesmap)[xr++];
+		else if (xr > r)
+			buf[cur++] = (*linesmap)[xl++];
+		else if ((*linesmap)[xl] > (*linesmap)[xr])
+			buf[cur++] = (*linesmap)[xr++];
+		else buf[cur++] = (*linesmap)[xl++];
+
+	}
+	for (int i = 0; i < cur; i++)
+		(*linesmap)[i + l] = buf[i];
+}
+
 int main()
 {
-	string s;
+	string line;
 	TaskQueue *taskQueue = new TaskQueue();
-	ThreadPool *threadPool;
-	int amountOfParts;
-	std::vector<std::vector<string>> lines(3);
+	ThreadPool *threadPool;	
+	int  linesInOnePart = 0, tempCounter = 0,i;
 
-
-
-	int lineCount=0;
-	int linesInPart = 0;
-	int tempCounter = 0;
 	cout << "Input amount of parts: ";
 	cin >> amountOfParts;
-	
+	std::vector<std::vector<string>> lines(amountOfParts);
 	Task* task = (Task*)malloc(sizeof(Task)*amountOfParts);
-	ifstream file("1.txt"); 
-	while (getline(file, s)) { 
-		lineCount++;
-	}
-	file.close();
-	linesInPart = lineCount / amountOfParts +1;
-	ifstream file2("1.txt");
-	int i = 0;
+
+	lineCount = countLines("1.txt");
+	if (lineCount == -1)
+		return -1;
+
+	linesInOnePart = lineCount / amountOfParts +1;
+
+	ifstream file;
+	file.open("1.txt");
 	for ( i = 0;  i < amountOfParts-1; i++)
 	{
-		while (tempCounter!=(i+1)*linesInPart) {
-			if (getline(file2, s))
+		while (tempCounter!=(i+1)*linesInOnePart) {
+			if (getline(file, line))
 			{
 				tempCounter++;
-				lines[i].push_back(s);
+				lines[i].push_back(line);
 			}
 		}
 		task[i].pParam = &lines[i];
 		task[i].threadFunction = &sortFilePart;
 		taskQueue->addNewTask(task+i);
-		//lines.clear();
 	}
-
-	while (getline(file2, s)) {
+	while (getline(file, line)) {
 		tempCounter++;
-		lines[i].push_back(s);
+		lines[i].push_back(line);
 	}
 	task[i].pParam = &lines[i];
 	task[i].threadFunction = &sortFilePart;
 	taskQueue->addNewTask(task+i);
+	file.close(); 
 
-	file2.close(); 
-
-
-	try
-	{
-		threadPool = new ThreadPool(amountOfParts, taskQueue);
-		threadPool->run();
-		threadPool->~ThreadPool();
-	}
-	catch (const ThreadPoolException& e)
-	{
-		printf(e.what());
-	}
-
+	threadPool = new ThreadPool(amountOfParts, taskQueue);
+	threadPool->run();
 	threadPool->wait();
+	threadPool->~ThreadPool();
 
-	ofstream fout("cppstudio.txt"); // создаём объект класса ofstream для записи и связываем его с файлом cppstudio.txt
+	vector<string> partHeads;
+
+	//1 realization
 	for (int i = 0; i < amountOfParts; i++)
 	{
 		Task * task = taskQueue->takeTask();
 		vector<string> * vect = task->pParam;
-		for (int j=0; j<vect->size();j++)
-			fout << (*vect)[j]<<"\n";
+		for (int j = 0; j < (*vect).size(); j++)
+			partHeads.push_back((*vect)[j]);
 	}
 
-	fout.close(); // закрываем файл
+	resultSort(0, lineCount - 1, &partHeads,lineCount);
 
-	
+	ofstream fout("reslut.txt");
+	for (int i = 0; i < lineCount; i++)
+	{
+		fout << partHeads[i] << "\n";
+	}
+	fout.close(); 
+
+	//2 realization
+	/*for (int i = 0; i < amountOfParts; i++)
+	{
+		Task * task = taskQueue->takeTask();
+		vector<string> * vect = task->pParam;
+		partHeads.push_back((*vect)[0]);
+	}
+
+	resultSort(0, amountOfParts - 1,&partHeads,amountOfParts);
+
+	ofstream fout("reslut.txt");
+	for (int i = 0; i < amountOfParts; i++)
+	{
+		for (int j = 0; j < amountOfParts; j++)
+			if (partHeads[i] == lines[j][0])
+			{
+				for (int k = 0; k < lines[j].size(); k++)
+					fout << lines[j][k] << "\n";
+				fout << "\n";
+			}
+	}
+	fout.close(); */
+	taskQueue->~TaskQueue();
+	cout << "Completed!";
 	_getch();
 	return 0;
 }
+

@@ -6,8 +6,8 @@ TaskQueue::TaskQueue()
 {
 	tasksCount = 0;
 	taskIndex = 0;
-	taskCS = (CRITICAL_SECTION*)malloc(sizeof(CRITICAL_SECTION));
-	InitializeCriticalSection(taskCS);
+	//taskCS = (CRITICAL_SECTION*)malloc(sizeof(CRITICAL_SECTION));
+	InitializeCriticalSection(&taskCS);
 }
 long TaskQueue::elemLeft()
 {
@@ -16,7 +16,7 @@ long TaskQueue::elemLeft()
 
 void TaskQueue::addNewTask(Task * task)
 {
-	EnterCriticalSection(taskCS);
+	EnterCriticalSection(&taskCS);
 	InterlockedIncrement(&tasksCount);
 	InterlockedIncrement(&taskIndex);
 	if (tasks == NULL) {
@@ -26,7 +26,7 @@ void TaskQueue::addNewTask(Task * task)
 		tasks = (Task*)realloc(tasks, sizeof(Task)*tasksCount);
 	}
 	tasks[tasksCount - 1] = *task;
-	LeaveCriticalSection(taskCS);
+	LeaveCriticalSection(&taskCS);
 }
 void TaskQueue::resetIndex()
 {
@@ -34,12 +34,14 @@ void TaskQueue::resetIndex()
 }
 Task * TaskQueue::takeTask()
 {
-	EnterCriticalSection(taskCS);
+	EnterCriticalSection(&taskCS);
 	Task * tempTask;
-	
 	tempTask = &tasks[taskIndex - 1];
 	InterlockedDecrement(&taskIndex);
-	//tasks = (Task*)realloc(tasks, sizeof(Task)*tasksCount);
-	LeaveCriticalSection(taskCS);
+	LeaveCriticalSection(&taskCS);
 	return tempTask;
+}
+TaskQueue::~TaskQueue()
+{
+	DeleteCriticalSection(&taskCS);
 }

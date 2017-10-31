@@ -1,3 +1,8 @@
-﻿  TaskQueue.cpp
+﻿  main.cpp
+d:\учеба\5 семестр\осисп\lr_4\threadpool\threadpool\main.cpp(119): warning C4018: <: несоответствие типов со знаком и без знака
+  TaskQueue.cpp
+  Создание кода...
+  Пропуск... (изменения не обнаружены)
+  ThreadPool.cpp
   ThreadPool.vcxproj -> D:\Учеба\5 семестр\ОСИСП\lr_4\ThreadPool\Debug\ThreadPool.exe
   ThreadPool.vcxproj -> D:\Учеба\5 семестр\ОСИСП\lr_4\ThreadPool\Debug\ThreadPool.pdb (Partial PDB)

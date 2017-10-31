@@ -1,14 +1,12 @@
 #include "stdafx.h"
 #include "ThreadPool.h"
 
-ThreadPool::ThreadPool(int numberOfThreads,TaskQueue * tasks)
+ThreadPool::ThreadPool(int amount,TaskQueue * tasks)
 {
-	_repositoryThreads = new Thread[numberOfThreads];
+	repositoryOfThreads = new Thread[amount];
 	taskQueue = tasks;
-	_numberOfThreads = numberOfThreads;
-	_logger = new Logger("logfile.dat");
+	numberOfThreads = amount;
 }
-
 
 bool ThreadPool::isAvailabilityThread(Thread *thread)
 {
@@ -22,15 +20,15 @@ bool ThreadPool::isStillActive(Thread *thread, DWORD status)
 	if (status == STILL_ACTIVE)
 		return true;
 
-	TerminateThread(thread->getHThread(), 0);
+	//TerminateThread(thread->getHThread(), 0);
 	return false;
 }
 
 int ThreadPool::getNumberOfFreeThread()
 {
-	for (int i = 0; i < _numberOfThreads; i++)
+	for (int i = 0; i < numberOfThreads; i++)
 	{
-		if (isAvailabilityThread(&_repositoryThreads[i]))
+		if (isAvailabilityThread(&repositoryOfThreads[i]))
 			return i;
 	}
 	return -1;
@@ -43,15 +41,18 @@ void ThreadPool::run()
 		if (currentThreadNumber != -1)
 		{
 			Task * task = taskQueue->takeTask();
-			_repositoryThreads[currentThreadNumber].createNewThread((LPTHREAD_START_ROUTINE)(task->threadFunction), task->pParam);
+			repositoryOfThreads[currentThreadNumber].createNewThread((LPTHREAD_START_ROUTINE)(task->threadFunction), task->pParam);
 		}
 	} while (taskQueue->elemLeft() != 0);
 }
 
 ThreadPool::~ThreadPool()
 {
-	_logger->logShutdown();
-	_logger->~Logger();
+/*	for (int i = 0; i < numberOfThreads; i++) {
+		delete &repositoryOfThreads[i];
+	}*/
+	//DeleteCriticalSection(resultCS);
+	//DeleteCriticalSection(taskCS);
 }
 
 void ThreadPool::wait()

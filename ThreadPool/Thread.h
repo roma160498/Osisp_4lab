@@ -1,10 +1,8 @@
 #pragma once
 #include <Windows.h>
-#include "ThreadPoolException.h"
-#include "Logger.h"
 #include <string> // подключаем строки
 #include <vector>
-
+using namespace std;
 class Thread
 {
 public:
